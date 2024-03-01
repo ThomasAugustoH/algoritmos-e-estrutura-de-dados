@@ -1,17 +1,17 @@
-package Lista01;
+package Aula29_02;
 
-public class ListaEstatica {
+public class ListaEstatica<ClasseInformadaPeloProgramador> {
 
-    private int[] info;
+    private Object[] info;
     private int tamanho;
 
     public ListaEstatica() {
-        info = new int[10];
+        info = new Object[10];
         tamanho = 0;
     }
 
     private void redimensionar() {
-        int[] infoNovo = new int[info.length + 10];
+        Object[] infoNovo = new Object[info.length + 10];
 
         for (int i = 0; i < tamanho; i++) {
             infoNovo[i] = info[i];
@@ -20,7 +20,8 @@ public class ListaEstatica {
         info = infoNovo;
     }
 
-    public void inserir(int valor) {
+    // Primeira versão possuia Object em vez de ClasseInformadaPeloProgramador
+    public void inserir(ClasseInformadaPeloProgramador valor) {
         if (tamanho == info.length) {
             redimensionar();
         }
@@ -35,35 +36,37 @@ public class ListaEstatica {
         }
     }
 
-    public int buscar(int valor) {
+    public int buscar(ClasseInformadaPeloProgramador valor) {
         for (int i = 0; i < tamanho; i++) {
-            if (info[i] == valor) {
+            if (info[i].equals(valor)) { // Usar == não funciona se for buscar um Objeto do tipo String ou um vetor
                 return i;
             }
         }
         return -1;
     }
 
-    public void retirar(int valor) {
+    public void retirar(ClasseInformadaPeloProgramador valor) {
         int indiceValor = buscar(valor);
         if (indiceValor > -1) {
             for (int i = indiceValor + 1; i < tamanho; i++) {
-                info[i-1] = info[i];
+                info[i - 1] = info[i];
             }
             tamanho--;
         }
     }
 
     public void liberar() {
-        info = new int[10];
+        info = new Object[10];
         tamanho = 0;
     }
 
-    public int obterElemento(int posicao) {
+    /* Usar a ClasseInformadaPeloProgramador em vez de Object permite usar métodos das classes armazenadas
+     *  Sem precisar usar cast na hora de chamar o método */
+    public ClasseInformadaPeloProgramador obterElemento(int posicao) {
         if (posicao > tamanho || posicao < 0) {
             throw new IndexOutOfBoundsException();
         }
-        return info[posicao];
+        return (ClasseInformadaPeloProgramador) info[posicao]; // Precisa do cast
     }
 
     public boolean estaVazia() {
@@ -77,7 +80,7 @@ public class ListaEstatica {
     public String toString() {
         String msg = "";
         for (int i = 0; i < tamanho; i++) {
-            msg += info[i];
+            msg += info[i].toString();
             if (i < tamanho - 1) {
                 msg += ",";
             }

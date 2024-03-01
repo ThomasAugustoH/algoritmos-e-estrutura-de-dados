@@ -1,17 +1,17 @@
-package Lista01;
+package Lista02;
 
-public class ListaEstatica {
+public class ListaEstatica<T> {
 
-    private int[] info;
+    private Object[] info;
     private int tamanho;
 
     public ListaEstatica() {
-        info = new int[10];
+        info = new Object[10];
         tamanho = 0;
     }
 
     private void redimensionar() {
-        int[] infoNovo = new int[info.length + 10];
+        Object[] infoNovo = new Object[info.length + 10];
 
         for (int i = 0; i < tamanho; i++) {
             infoNovo[i] = info[i];
@@ -20,7 +20,7 @@ public class ListaEstatica {
         info = infoNovo;
     }
 
-    public void inserir(int valor) {
+    public void inserir(T valor) {
         if (tamanho == info.length) {
             redimensionar();
         }
@@ -35,7 +35,7 @@ public class ListaEstatica {
         }
     }
 
-    public int buscar(int valor) {
+    public int buscar(T valor) {
         for (int i = 0; i < tamanho; i++) {
             if (info[i] == valor) {
                 return i;
@@ -44,26 +44,30 @@ public class ListaEstatica {
         return -1;
     }
 
-    public void retirar(int valor) {
+    public void retirar(T valor) {
         int indiceValor = buscar(valor);
         if (indiceValor > -1) {
-            for (int i = indiceValor + 1; i < tamanho; i++) {
-                info[i-1] = info[i];
+            for (int i = indiceValor + 1; i <= tamanho; i++) {
+                if (i == tamanho) {
+                    info[i] = null; // Precisa limpar o objeto no final da lista
+                } else {
+                    info[i - 1] = info[i];
+                }
             }
             tamanho--;
         }
     }
 
     public void liberar() {
-        info = new int[10];
+        info = new Object[10];
         tamanho = 0;
     }
 
-    public int obterElemento(int posicao) {
+    public T obterElemento(int posicao) {
         if (posicao > tamanho || posicao < 0) {
             throw new IndexOutOfBoundsException();
         }
-        return info[posicao];
+        return (T) info[posicao];
     }
 
     public boolean estaVazia() {
@@ -83,5 +87,13 @@ public class ListaEstatica {
             }
         }
         return msg;
+    }
+
+    public void inverter() {
+        for (int i = 0; i < tamanho / 2; i++) {
+            Object temp = info[i];
+            info[i] = info[tamanho-i-1];
+            info[tamanho-i-1] = temp;
+        }
     }
 }

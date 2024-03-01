@@ -1,11 +1,13 @@
-package Lista01;
+package Lista02;
 
+import Lista02.ListaEstatica;
 import org.junit.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ListaEstaticaTest {
-    private ListaEstatica l;
+    private ListaEstatica<Integer> l;
 
     public ListaEstaticaTest() {
     }
@@ -20,7 +22,7 @@ public class ListaEstaticaTest {
 
     @Before
     public void setUp() {
-        l = new ListaEstatica();
+        l = new Lista02.ListaEstatica<>();
         l.inserir(5);
         l.inserir(10);
         l.inserir(15);
@@ -70,7 +72,7 @@ public class ListaEstaticaTest {
 
     @Test
     public void test07() {
-        assertEquals(20, l.obterElemento(3));
+        assertEquals(20, (int) l.obterElemento(3));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -81,6 +83,19 @@ public class ListaEstaticaTest {
     @Test
     public void test09() {
         l.liberar();
-        assertEquals(true, l.estaVazia());
+        assertTrue(l.estaVazia());
+    }
+
+    @Test
+    public void test10() {
+        l.inverter();
+        assertEquals("20,15,10,5", l.toString());
+    }
+
+    @Test
+    public void test11() {
+        l.inserir(25);
+        l.inverter();
+        assertEquals("25,20,15,10,5", l.toString());
     }
 }
