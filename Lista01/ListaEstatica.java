@@ -47,8 +47,8 @@ public class ListaEstatica {
     public void retirar(int valor) {
         int indiceValor = buscar(valor);
         if (indiceValor > -1) {
-            for (int i = indiceValor + 1; i < tamanho; i++) {
-                info[i-1] = info[i];
+            for (int i = indiceValor; i < tamanho - 1; i++) {
+                info[i] = info[i+1];
             }
             tamanho--;
         }

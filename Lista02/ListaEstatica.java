@@ -37,7 +37,7 @@ public class ListaEstatica<T> {
 
     public int buscar(T valor) {
         for (int i = 0; i < tamanho; i++) {
-            if (info[i] == valor) {
+            if (info[i].equals(valor)) {
                 return i;
             }
         }
@@ -48,12 +48,11 @@ public class ListaEstatica<T> {
         int indiceValor = buscar(valor);
         if (indiceValor > -1) {
             for (int i = indiceValor + 1; i <= tamanho; i++) {
-                if (i == tamanho) {
-                    info[i] = null; // Precisa limpar o objeto no final da lista
-                } else {
+                {
                     info[i - 1] = info[i];
                 }
             }
+            info[tamanho] = null; // Precisa limpar o objeto no final da lista
             tamanho--;
         }
     }
@@ -81,7 +80,7 @@ public class ListaEstatica<T> {
     public String toString() {
         String msg = "";
         for (int i = 0; i < tamanho; i++) {
-            msg += info[i];
+            msg += info[i].toString();
             if (i < tamanho - 1) {
                 msg += ",";
             }
@@ -92,8 +91,8 @@ public class ListaEstatica<T> {
     public void inverter() {
         for (int i = 0; i < tamanho / 2; i++) {
             Object temp = info[i];
-            info[i] = info[tamanho-i-1];
-            info[tamanho-i-1] = temp;
+            info[i] = info[tamanho - i - 1];
+            info[tamanho - i - 1] = temp;
         }
     }
 }

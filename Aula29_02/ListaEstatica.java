@@ -80,7 +80,7 @@ public class ListaEstatica<ClasseInformadaPeloProgramador> {
     public String toString() {
         String msg = "";
         for (int i = 0; i < tamanho; i++) {
-            msg += info[i].toString();
+            msg += info[i].toString();  // Precisa transformar na representação textual
             if (i < tamanho - 1) {
                 msg += ",";
             }
