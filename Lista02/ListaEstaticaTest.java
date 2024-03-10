@@ -34,34 +34,34 @@ public class ListaEstaticaTest {
     }
 
     @Test
-    public void test01() {
+    public void Test01() {
         assertEquals("5,10,15,20", l.toString());
     }
 
     @Test
-    public void test02() {
+    public void Test02() {
         assertEquals(4, l.getTamanho());
     }
 
     @Test
-    public void test03() {
+    public void Test03() {
         assertEquals(2, l.buscar(15));
     }
 
     @Test
-    public void test04() {
+    public void Test04() {
         assertEquals(-1, l.buscar(30));
     }
 
     @Test
-    public void test05() {
+    public void Test05() {
         l.retirar(10);
         assertEquals("5,15,20", l.toString());
         assertEquals(3, l.getTamanho());
     }
 
     @Test
-    public void test06() {
+    public void Test06() {
         l.liberar();
         for (int i = 1; i < 16; i++) {
             l.inserir(i);
@@ -71,29 +71,29 @@ public class ListaEstaticaTest {
     }
 
     @Test
-    public void test07() {
+    public void Test07() {
         assertEquals(20, (int) l.obterElemento(3));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void test08() {
+    public void Test08() {
         l.obterElemento(5);
     }
 
     @Test
-    public void test09() {
+    public void Test09() {
         l.liberar();
         assertTrue(l.estaVazia());
     }
 
     @Test
-    public void test10() {
+    public void Test10() {
         l.inverter();
         assertEquals("20,15,10,5", l.toString());
     }
 
     @Test
-    public void test11() {
+    public void Test11() {
         l.inserir(25);
         l.inverter();
         assertEquals("25,20,15,10,5", l.toString());
