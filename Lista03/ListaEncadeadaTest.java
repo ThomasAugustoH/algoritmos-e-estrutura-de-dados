@@ -54,7 +54,7 @@ public class ListaEncadeadaTest {
         l.inserir(10);
         l.inserir(15);
         assertEquals("15,10,5", l.toString());
-        assertNull(l.obterNo(3));
+        assertEquals(3, l.obterComprimento());
     }
 
     /*
