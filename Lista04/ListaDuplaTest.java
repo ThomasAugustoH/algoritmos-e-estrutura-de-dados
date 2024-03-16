@@ -31,18 +31,29 @@ public class ListaDuplaTest {
     @Test
     public void Test01() {
         NoListaDupla<Integer> p = l.getPrimeiro();
-        Integer i = 20;
-        while (p.getProximo() != null){
-            assertEquals(i, p.getInfo());
-            p = p.getProximo();
-            i -= 5;
+        String msg = "";
+        while (true) {
+            if (p.getProximo() != null){
+                msg += p.getInfo() + " ";
+                p = p.getProximo();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
         }
+        assertEquals("20 15 10 5", msg);
 
-        while (p.getAnterior() != null){
-            assertEquals(i, p.getInfo());
-            p = p.getAnterior();
-            i += 5;
+        msg = "";
+        while (true) {
+            if (p.getAnterior() != null){
+                msg += p.getInfo() + " ";
+                p = p.getAnterior();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
         }
+        assertEquals("5 10 15 20", msg);
     }
 
     /*
@@ -68,18 +79,29 @@ public class ListaDuplaTest {
     public void Test04() {
         l.retirar(20);
         NoListaDupla<Integer> p = l.getPrimeiro();
-        Integer i = 15;
-        while (p.getProximo() != null){
-            assertEquals(i, p.getInfo());
-            p = p.getProximo();
-            i -= 5;
+        String msg = "";
+        while (true) {
+            if (p.getProximo() != null){
+                msg += p.getInfo() + " ";
+                p = p.getProximo();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
         }
+        assertEquals("15 10 5", msg);
 
-        while (p.getAnterior() != null){
-            assertEquals(i, p.getInfo());
-            p = p.getAnterior();
-            i += 5;
+        msg = "";
+        while (true) {
+            if (p.getAnterior() != null){
+                msg += p.getInfo() + " ";
+                p = p.getAnterior();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
         }
+        assertEquals("5 10 15", msg);
     }
 
     /*
@@ -89,17 +111,29 @@ public class ListaDuplaTest {
     public void Test05() {
         l.retirar(10);
         NoListaDupla<Integer> p = l.getPrimeiro();
-        assertEquals((Integer) 20, p.getInfo());
-        p = p.getProximo();
-        assertEquals((Integer) 15, p.getInfo());
-        p = p.getProximo();
-        assertEquals((Integer) 5, p.getInfo());
-        assertNull(p.getProximo());
-        p = p.getAnterior();
-        assertEquals((Integer) 15, p.getInfo());
-        p = p.getAnterior();
-        assertEquals((Integer) 20, p.getInfo());
-        assertNull(p.getAnterior());
+        String msg = "";
+        while (true) {
+            if (p.getProximo() != null){
+                msg += p.getInfo() + " ";
+                p = p.getProximo();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
+        }
+        assertEquals("20 15 5", msg);
+
+        msg = "";
+        while (true) {
+            if (p.getAnterior() != null){
+                msg += p.getInfo() + " ";
+                p = p.getAnterior();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
+        }
+        assertEquals("5 15 20", msg);
     }
 
     /*
@@ -109,17 +143,29 @@ public class ListaDuplaTest {
     public void Test06() {
         l.retirar(5);
         NoListaDupla<Integer> p = l.getPrimeiro();
-        assertEquals((Integer) 20, p.getInfo());
-        p = p.getProximo();
-        assertEquals((Integer) 15, p.getInfo());
-        p = p.getProximo();
-        assertEquals((Integer) 10, p.getInfo());
-        assertNull(p.getProximo());
-        p = p.getAnterior();
-        assertEquals((Integer) 15, p.getInfo());
-        p = p.getAnterior();
-        assertEquals((Integer) 20, p.getInfo());
-        assertNull(p.getAnterior());
+        String msg = "";
+        while (true) {
+            if (p.getProximo() != null){
+                msg += p.getInfo() + " ";
+                p = p.getProximo();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
+        }
+        assertEquals("20 15 10", msg);
+
+        msg = "";
+        while (true) {
+            if (p.getAnterior() != null){
+                msg += p.getInfo() + " ";
+                p = p.getAnterior();
+            } else {
+                msg += p.getInfo();
+                break;
+            }
+        }
+        assertEquals("10 15 20", msg);
     }
 
     /*
@@ -140,5 +186,7 @@ public class ListaDuplaTest {
         assertNull(n3.getProximo());
         assertNull(n4.getAnterior());
         assertNull(n4.getProximo());
+        l.inserir(1);
+        assertEquals((Integer) 1, l.getPrimeiro().getInfo());
     }
 }

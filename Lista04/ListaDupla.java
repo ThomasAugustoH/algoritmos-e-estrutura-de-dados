@@ -60,22 +60,23 @@ public class ListaDupla<T> {
             p = p.getProximo();
         }
 
-        while (p.getAnterior() != null){
-            System.out.println(p);
+        while (p != null){
+            System.out.println(p.getInfo());
             p = p.getAnterior();
         }
     }
 
     public void liberar() {
         NoListaDupla<T> p = primeiro;
-        NoListaDupla<T> a = null;
 
-        while (p.getProximo() != null){
-            a = p;
+        while (p != null){
+            if (p != primeiro){
+                p.getAnterior().setProximo(null);
+                p.setAnterior(null);
+            }
             p = p.getProximo();
-            a.setProximo(null);
-            p.setAnterior(null);
         }
+        primeiro = null;
     }
 
     public String toString() {
