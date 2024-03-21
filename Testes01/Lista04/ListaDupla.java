@@ -1,7 +1,8 @@
-package Lista04;
+package Testes01.Lista04;
+
+import Testes01.Lista03.NoLista;
 
 public class ListaDupla<T> {
-
     private NoListaDupla<T> primeiro;
 
     public ListaDupla() {
@@ -25,7 +26,6 @@ public class ListaDupla<T> {
 
     public NoListaDupla<T> buscar(T valor) {
         NoListaDupla<T> p = primeiro;
-
         while (p != null) {
             if (p.getInfo().equals(valor)) {
                 return p;
@@ -39,13 +39,12 @@ public class ListaDupla<T> {
         NoListaDupla<T> p = buscar(valor);
 
         if (p != null) {
-            if (primeiro == p) {
+            if (p == primeiro) {
                 primeiro = p.getProximo();
             } else {
                 p.getAnterior().setProximo(p.getProximo());
             }
-
-            if (p.getProximo() != null) {
+            if (p.getProximo() != null){
                 p.getProximo().setAnterior(p.getAnterior());
             }
         }
@@ -54,26 +53,24 @@ public class ListaDupla<T> {
     public void exibirOrdemInversa() {
         NoListaDupla<T> p = primeiro;
 
-        while (p.getProximo() != null){
+        while (p.getProximo() != null) {
             p = p.getProximo();
         }
-
-        while (p != null){
+        while (p != null) {
             System.out.println(p.getInfo());
             p = p.getAnterior();
         }
     }
 
     public void liberar() {
-        NoListaDupla<T> p = primeiro;
+        NoListaDupla<T> p = primeiro.getProximo();
 
-        while (p != null){
-            if (p != primeiro){
-                p.getAnterior().setProximo(null);
-                p.setAnterior(null);
-            }
+        while (p != null) {
+            p.getAnterior().setProximo(null);
+            p.setAnterior(null);
             p = p.getProximo();
         }
+
         primeiro = null;
     }
 

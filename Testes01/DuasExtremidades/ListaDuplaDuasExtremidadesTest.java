@@ -1,4 +1,4 @@
-package Lista04;
+package Testes01.DuasExtremidades;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,16 +6,28 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ListaDuplaTest {
-    private ListaDupla<Integer> l;
+public class ListaDuplaDuasExtremidadesTest {
+    private ListaDuplaDuasExtremidades<Integer> l;
 
     @Before
     public void setUp() throws Exception {
-        l = new ListaDupla<>();
+        l = new ListaDuplaDuasExtremidades<>();
+        /*
         l.inserir(5);
         l.inserir(10);
         l.inserir(15);
         l.inserir(20);
+        */
+        /*
+        l.inserir(5, false);
+        l.inserir(10, false);
+        l.inserir(15, false);
+        l.inserir(20, false);
+        */
+        l.inserir(20, true);
+        l.inserir(15, true);
+        l.inserir(10, true);
+        l.inserir(5, true);
     }
 
     @After
@@ -28,7 +40,7 @@ public class ListaDuplaTest {
     */
     @Test
     public void Test01() {
-        NoListaDupla<Integer> p = l.getPrimeiro();
+        NoListaDuplaDuasExtremidades<Integer> p = l.getPrimeiro();
         String msg = "";
         while (true) {
             if (p.getProximo() != null){
@@ -76,7 +88,7 @@ public class ListaDuplaTest {
     @Test
     public void Test04() {
         l.retirar(20);
-        NoListaDupla<Integer> p = l.getPrimeiro();
+        NoListaDuplaDuasExtremidades<Integer> p = l.getPrimeiro();
         String msg = "";
         while (true) {
             if (p.getProximo() != null){
@@ -108,7 +120,7 @@ public class ListaDuplaTest {
     @Test
     public void Test05() {
         l.retirar(10);
-        NoListaDupla<Integer> p = l.getPrimeiro();
+        NoListaDuplaDuasExtremidades<Integer> p = l.getPrimeiro();
         String msg = "";
         while (true) {
             if (p.getProximo() != null){
@@ -140,7 +152,7 @@ public class ListaDuplaTest {
     @Test
     public void Test06() {
         l.retirar(5);
-        NoListaDupla<Integer> p = l.getPrimeiro();
+        NoListaDuplaDuasExtremidades<Integer> p = l.getPrimeiro();
         String msg = "";
         while (true) {
             if (p.getProximo() != null){
@@ -171,10 +183,10 @@ public class ListaDuplaTest {
      */
     @Test
     public void Test07() {
-        NoListaDupla<Integer> n1 = l.buscar(5);
-        NoListaDupla<Integer> n2 = l.buscar(10);
-        NoListaDupla<Integer> n3 = l.buscar(15);
-        NoListaDupla<Integer> n4 = l.buscar(20);
+        NoListaDuplaDuasExtremidades<Integer> n1 = l.buscar(5);
+        NoListaDuplaDuasExtremidades<Integer> n2 = l.buscar(10);
+        NoListaDuplaDuasExtremidades<Integer> n3 = l.buscar(15);
+        NoListaDuplaDuasExtremidades<Integer> n4 = l.buscar(20);
         l.liberar();
         assertNull(n1.getAnterior());
         assertNull(n1.getProximo());
