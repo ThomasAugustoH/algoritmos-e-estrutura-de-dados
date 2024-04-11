@@ -1,4 +1,4 @@
-package Lista02;
+package Prova01;
 
 public class ListaEstatica<T> {
 
@@ -26,6 +26,21 @@ public class ListaEstatica<T> {
         }
 
         info[tamanho] = valor;
+        tamanho++;
+    }
+
+    public void inserir(int posicao, T valor) {
+        if (posicao < 0 || posicao > tamanho) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (tamanho == info.length) {
+            redimensionar();
+        }
+
+        for (int i = tamanho; i > posicao; i--) {
+            info[i] = info[i - 1];
+        }
+        info[posicao] = valor;
         tamanho++;
     }
 

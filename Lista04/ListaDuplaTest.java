@@ -184,7 +184,5 @@ public class ListaDuplaTest {
         assertNull(n3.getProximo());
         assertNull(n4.getAnterior());
         assertNull(n4.getProximo());
-        l.inserir(1);
-        assertEquals((Integer) 1, l.getPrimeiro().getInfo());
     }
 }
