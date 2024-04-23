@@ -30,7 +30,7 @@ public class ListaEncadeada<T> {
         NoLista<T> novo = new NoLista<>();
         novo.setInfo(info);
         novo.setProximo(null);
-        if (ultimo == null){
+        if (estaVazia()){
             primeiro = novo;
         } else {
             ultimo.setProximo(novo);

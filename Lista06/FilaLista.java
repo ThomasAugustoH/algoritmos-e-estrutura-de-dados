@@ -16,6 +16,10 @@ public class FilaLista<T> implements Fila<T> {
 
     @Override
     public T peek() {
+        if (estaVazia()){
+            throw new FilaVaziaException();
+        }
+        
         return lista.getPrimeiro().getInfo();
     }
 
@@ -28,9 +32,7 @@ public class FilaLista<T> implements Fila<T> {
 
     @Override
     public void liberar() {
-        while (lista.getPrimeiro() != null){
-            retirar();
-        }
+        lista = new ListaEncadeada<>();
     }
 
     @Override

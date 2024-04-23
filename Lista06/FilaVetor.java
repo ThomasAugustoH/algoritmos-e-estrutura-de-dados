@@ -32,7 +32,7 @@ public class FilaVetor<T> implements Fila<T>{
 
     @Override
     public T peek() {
-        if (tamanho == 0){
+        if (estaVazia()){
             throw new FilaVaziaException();
         }
 
@@ -51,9 +51,8 @@ public class FilaVetor<T> implements Fila<T>{
 
     @Override
     public void liberar() {
-        while (tamanho > 0){
-            retirar();
-        }
+        info = new Object[limite];
+        tamanho = 0;
     }
 
     public FilaVetor<T> criarFilaConcatenada(FilaVetor<T> f2) {
@@ -72,16 +71,16 @@ public class FilaVetor<T> implements Fila<T>{
 
     @Override
     public String toString() {
-        String msg = "";
+        String retorno = "";
 
         for (int i = 0; i < tamanho; i++) {
-            msg += info[(inicio + i) % limite].toString();
+            retorno += info[(inicio + i) % limite].toString();
             if (i < tamanho - 1) {
-                msg += ",";
+                retorno += ",";
             }
         }
 
-        return msg;
+        return retorno;
     }
 
     public int getLimite(){
