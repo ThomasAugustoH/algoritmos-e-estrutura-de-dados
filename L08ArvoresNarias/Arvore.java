@@ -39,7 +39,11 @@ public class Arvore<T> {
     }
 
     public boolean pertence(T info) {
-        return !(raiz == null) && pertence(raiz, info);
+        if (raiz == null) {
+            return false;
+        } else {
+            return pertence(raiz, info);
+        }
     }
 
     public boolean pertence(NoArvore<T> no, T info) {
