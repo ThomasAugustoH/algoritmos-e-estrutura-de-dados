@@ -16,9 +16,13 @@ public class Arvore<T> {
         this.raiz = raiz;
     }
 
+    public boolean estaVazia(){
+        return raiz == null;
+    }
+
     @Override
     public String toString() {
-        if (raiz == null) {
+        if (estaVazia()) {
             return "";
         } else {
             return obterRepresentacaoTextual(raiz);
@@ -27,7 +31,7 @@ public class Arvore<T> {
 
     private String obterRepresentacaoTextual(NoArvore<T> no) {
         String s = "<";
-        s += no.getInfo().toString();
+        s += no.getInfo();
 
         NoArvore<T> p = no.getPrimeiro();
         while (p != null) {
@@ -39,7 +43,7 @@ public class Arvore<T> {
     }
 
     public boolean pertence(T info) {
-        if (raiz == null) {
+        if (estaVazia()) {
             return false;
         } else {
             return pertence(raiz, info);
@@ -47,12 +51,10 @@ public class Arvore<T> {
     }
 
     public boolean pertence(NoArvore<T> no, T info) {
-        if (no.getInfo() == info) {
+        if (no.getInfo().equals(info)) {
             return true;
         } else {
-            NoArvore<T> p;
-            p = no.getPrimeiro();
-
+            NoArvore<T> p = no.getPrimeiro();
             while (p != null) {
                 if (pertence(p, info)) {
                     return true;
@@ -67,6 +69,7 @@ public class Arvore<T> {
         return contarNos(raiz);
     }
 
+    /*
     public int contarNos(NoArvore<T> no) {
 
         if (no == null) {
@@ -75,5 +78,18 @@ public class Arvore<T> {
         else {
             return 1 + contarNos(no.getPrimeiro()) + contarNos(no.getProximo());
         }
+    }
+    */
+
+    public int contarNos(NoArvore<T> no) {
+        int qtde = 1;
+
+        NoArvore<T> p = no.getPrimeiro();
+        while (p != null){
+            qtde += contarNos(p);
+            p = p.getProximo();
+        }
+
+        return qtde;
     }
 }

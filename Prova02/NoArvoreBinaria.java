@@ -1,4 +1,4 @@
-package Lista07;
+package Prova02;
 
 public class NoArvoreBinaria<T> {
 

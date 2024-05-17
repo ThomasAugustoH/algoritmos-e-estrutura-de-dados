@@ -1,4 +1,4 @@
-package L08ArvoresNarias;
+package Testes02;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,15 +22,15 @@ public class ArvoreTest {
         NoArvore<Integer> no9 = new NoArvore<>(9);
         NoArvore<Integer> no10 = new NoArvore<>(10);
 
-        no1.inserirFilho(no4);
-        no1.inserirFilho(no3);
-        no1.inserirFilho(no2);
-        no2.inserirFilho(no7);
-        no2.inserirFilho(no6);
-        no2.inserirFilho(no5);
-        no3.inserirFilho(no8);
-        no4.inserirFilho(no10);
-        no4.inserirFilho(no9);
+        no1.setPrimeiro(no2);
+        no2.setProximo(no3);
+        no3.setProximo(no4);
+        no2.setPrimeiro(no5);
+        no5.setProximo(no6);
+        no6.setProximo(no7);
+        no3.setPrimeiro(no8);
+        no4.setPrimeiro(no9);
+        no9.setProximo(no10);
 
         arvore.setRaiz(no1);
     }

@@ -1,4 +1,4 @@
-package Lista07;
+package Prova02;
 
 public class ArvoreBinaria<T> {
 
@@ -24,7 +24,9 @@ public class ArvoreBinaria<T> {
         if (no == null) {
             return false;
         } else {
-            return no.getInfo() == info || pertence(no.getEsquerda(), info) || pertence(no.getDireita(), info);
+            return no.getInfo().equals(info) ||
+                    pertence(no.getEsquerda(), info) ||
+                    pertence(no.getDireita(), info);
         }
     }
 
@@ -37,7 +39,9 @@ public class ArvoreBinaria<T> {
         if (no == null) {
             return "<>";
         } else {
-            return "<" + no.getInfo() +  arvorePre(no.getEsquerda()) + arvorePre(no.getDireita()) + ">";
+            return "<" + no.getInfo() +
+                    arvorePre(no.getEsquerda()) +
+                    arvorePre(no.getDireita()) + ">";
         }
     }
 
@@ -46,10 +50,24 @@ public class ArvoreBinaria<T> {
     }
 
     private int contarNos(NoArvoreBinaria<T> no) {
-        if (no == null){
+        if (no == null) {
             return 0;
         } else {
-            return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
+            return 1 +
+                    contarNos(no.getEsquerda()) +
+                    contarNos(no.getDireita());
+        }
+    }
+
+    public int contarFolhas(NoArvoreBinaria<T> sa) {
+        if (sa == null) {
+            return 0;
+        }
+        if (sa.getEsquerda() == null && sa.getDireita() == null) {
+            return 1;
+        } else {
+            return contarFolhas(sa.getEsquerda()) +
+                    contarFolhas(sa.getDireita());
         }
     }
 }
