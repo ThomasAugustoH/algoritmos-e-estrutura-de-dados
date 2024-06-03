@@ -12,7 +12,7 @@ public class ListaEstatica<T> extends ListaAbstract<T>{
         }
 
         info[tamanho] = valor;
-        tamanho++;
+        setTamanho(++tamanho);
     }
 
     @Override
