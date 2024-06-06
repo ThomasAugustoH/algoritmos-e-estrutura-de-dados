@@ -9,6 +9,7 @@ public class ListaEstatica<T> extends ListaAbstract<T>{
 
         if (tamanho == info.length) {
             redimensionar();
+            info = getInfo();
         }
 
         info[tamanho] = valor;
