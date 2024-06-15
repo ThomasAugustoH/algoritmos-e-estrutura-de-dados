@@ -9,8 +9,12 @@ public class ArvoreBinariaBuscaTest {
 
     ArvoreBinariaBusca<Integer> arvore = new ArvoreBinariaBusca<>();
 
+    /*
+        Conferir se o método inserir() mantém os dados armazenados adequadamente, mantendo a árvore com a
+        característica de ser uma árvore binária de busca.
+     */
     @Test
-    public void teste01() {
+    public void testeArmazenar() {
         arvore.inserir(50);
         arvore.inserir(30);
         arvore.inserir(70);
@@ -26,8 +30,11 @@ public class ArvoreBinariaBuscaTest {
         assertEquals(esperado, arvore.toString());
     }
 
+    /*
+        Conferir se a árvore consegue remover um nó folha
+     */
     @Test
-    public void teste02() {
+    public void testeRemoverFolha() {
         arvore.inserir(50);
         arvore.inserir(30);
         arvore.inserir(25);
@@ -40,8 +47,11 @@ public class ArvoreBinariaBuscaTest {
         assertEquals(esperado, arvore.toString());
     }
 
+    /*
+        Conferir se a árvore consegue remover nó com um filho
+     */
     @Test
-    public void teste03() {
+    public void testeRemoverUmFilho() {
         arvore.inserir(80);
         arvore.inserir(52);
         arvore.inserir(90);
@@ -57,8 +67,11 @@ public class ArvoreBinariaBuscaTest {
         assertEquals(esperado, arvore.toString());
     }
 
+    /*
+        Conferir se a árvore consegue remover um nó com dois filhos
+     */
     @Test
-    public void teste04() {
+    public void testeRemoverDoisFilhos() {
         arvore.inserir(250);
         arvore.inserir(38);
         arvore.inserir(26);
