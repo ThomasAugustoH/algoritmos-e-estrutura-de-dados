@@ -23,13 +23,13 @@ public class OrdenacaoMergeSort<T extends Comparable<T>> extends OrdenacaoAbstra
     private void merge(int inicio, int fim, int meio) {
 
         int tamEsquerda = meio - inicio + 1;
-        T[] esquerda = (T[]) new Object[tamEsquerda];
+        T[] esquerda = (T[]) new Comparable[tamEsquerda];
         for (int i = 0; i < tamEsquerda; i++) {
             esquerda[i] = getInfo()[inicio + i];
         }
 
         int tamDireita = fim - meio;
-        T[] direita = (T[]) new Object[tamDireita];
+        T[] direita = (T[]) new Comparable[tamDireita];
         for (int i = 0; i < tamDireita; i++) {
             direita[i] = getInfo()[meio + 1 + i];
         }
