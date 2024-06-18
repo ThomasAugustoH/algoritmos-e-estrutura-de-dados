@@ -91,4 +91,21 @@ public class ArvoreBinariaBuscaTest {
 
         assertEquals(esperado, arvore.toString());
     }
+
+    @Test
+    public void testeBusca() {
+        arvore.inserir(50);
+        arvore.inserir(30);
+        arvore.inserir(70);
+        arvore.inserir(40);
+        arvore.inserir(25);
+        arvore.inserir(75);
+        arvore.inserir(65);
+        arvore.inserir(35);
+        arvore.inserir(60);
+
+        assertEquals(arvore.buscar(40), arvore.buscarRecursivo(arvore.getRaiz(), 40));
+        assertNull(arvore.buscar(100));
+        assertNull(arvore.buscarRecursivo(arvore.getRaiz(), 100));
+    }
 }

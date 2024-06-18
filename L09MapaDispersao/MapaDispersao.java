@@ -17,6 +17,7 @@ public class MapaDispersao<T> {
     public void inserir(int chave, T dado){
         int indice = calcularHash(chave);
 
+        // Se a chave onde for inserido o objeto ainda estiver vazia, cria uma nova ListaEncadeada
         if (info[indice] == null) {
             info[indice] = new ListaEncadeada<>();
         }
@@ -30,10 +31,12 @@ public class MapaDispersao<T> {
     public void remover(int chave) {
         int indice = calcularHash(chave);
 
+        // Verifica se existe uma ListaEncadeada naquele índice do vetor
         if (info[indice] != null) {
             NoMapa<T> noMapa = new NoMapa<>();
             noMapa.setChave(chave);
 
+            // Procurar dentro da ListaEncadeada
             NoLista<NoMapa<T>> no = info[indice].buscar(noMapa);
             if (no != null) {
                 info[indice].retirar(no.getInfo());
@@ -44,10 +47,12 @@ public class MapaDispersao<T> {
     public T buscar(int chave) {
         int indice = calcularHash(chave);
 
+        // Verifica se existe uma ListaEncadeada naquele índice do vetor
         if (info[indice] != null) {
             NoMapa<T> noMapa = new NoMapa<>();
             noMapa.setChave(chave);
 
+            // Procurar dentro da ListaEncadeada
             NoLista<NoMapa<T>> no = info[indice].buscar(noMapa);
             if (no != null) {
                 return no.getInfo().getInfo();
