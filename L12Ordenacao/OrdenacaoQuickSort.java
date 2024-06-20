@@ -15,19 +15,23 @@ public class OrdenacaoQuickSort<T extends Comparable<T>> extends OrdenacaoAbstra
         }
     }
 
+    // Identificar a localização final do pivô
+    // Coloca os elementos menores à esquerda do pivô
+    // Coloca os elementos maiores à direita do pivô
     private int particionar(int inicio, int fim) {
+        T[] info = getInfo();
         int a = inicio;
         int b = fim + 1;
-        T pivo = getInfo()[inicio];
+        T pivo = info[inicio];
 
         while (true) {
             do {
                 a++;
-            } while (a <= fim && getInfo()[a].compareTo(pivo) < 0);
+            } while (a <= fim && info[a].compareTo(pivo) < 0);
 
             do {
                 b--;
-            } while (b >= inicio && getInfo()[b].compareTo(pivo) > 0);
+            } while (b >= inicio && info[b].compareTo(pivo) > 0);
 
             if (a >= b) {
                 break;

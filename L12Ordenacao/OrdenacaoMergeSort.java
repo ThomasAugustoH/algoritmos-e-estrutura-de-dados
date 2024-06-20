@@ -21,14 +21,14 @@ public class OrdenacaoMergeSort<T extends Comparable<T>> extends OrdenacaoAbstra
     }
 
     private void merge(int inicio, int fim, int meio) {
-
+        T[] info = getInfo();
         /*
             Calcular tamanho do array esquerdo e copiar os elementos para esse vetor temporário
          */
         int tamEsquerda = meio - inicio + 1;
         T[] esquerda = (T[]) new Comparable[tamEsquerda];
         for (int i = 0; i < tamEsquerda; i++) {
-            esquerda[i] = getInfo()[inicio + i];
+            esquerda[i] = info[inicio + i];
         }
 
          /*
@@ -37,44 +37,37 @@ public class OrdenacaoMergeSort<T extends Comparable<T>> extends OrdenacaoAbstra
         int tamDireita = fim - meio;
         T[] direita = (T[]) new Comparable[tamDireita];
         for (int i = 0; i < tamDireita; i++) {
-            direita[i] = getInfo()[meio + 1 + i];
+            direita[i] = info[meio + 1 + i];
         }
 
         int cEsq = 0;
         int cDir = 0;
-        int i = inicio;
+        int i;
 
         // Faz a fusão dos arrays temporários no array principal
-        for (; cEsq < tamEsquerda && cDir < tamDireita; i++) {
-            T[] info = getInfo(); // Obtém o array principal
+        for (i = inicio; i <= fim && cEsq < tamEsquerda && cDir < tamDireita; i++) {
             // Compara os elementos dos arrays esquerdo e direito
             if (esquerda[cEsq].compareTo(direita[cDir]) < 0) {
                 // Se o elemento do array esquerdo é menor, copia-o para o array principal
                 info[i] = esquerda[cEsq];
-                setInfo(info);
                 cEsq++; // Incrementa o índice do array esquerdo
             } else {
                 // Se o elemento do array direito é menor ou igual, copia-o para o array principal
                 info[i] = direita[cDir];
-                setInfo(info);
                 cDir++; // Incrementa o índice do array direito
             }
         }
 
         // Copia os elementos restantes do array esquerdo, se houver
         while (cEsq < tamEsquerda) {
-            T[] info = getInfo();
             info[i] = esquerda[cEsq]; // Copia o elemento do array esquerdo para o array principal
-            setInfo(info);
             cEsq++;
             i++;
         }
 
         // Copia os elementos restantes do array direito, se houver
         while (cDir < tamDireita) {
-            T[] info = getInfo();
             info[i] = direita[cDir]; // Copia o elemento do array direito para o array principal
-            setInfo(info);
             cDir++;
             i++;
         }

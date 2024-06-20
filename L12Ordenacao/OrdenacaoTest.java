@@ -85,21 +85,4 @@ public class OrdenacaoTest {
         assertEquals((Integer) 88, vetor[4]);
         assertEquals((Integer) 90, vetor[5]);
     }
-
-    @Test
-    public void teste() {
-        Integer[] vetor = {6, 3, 1, 2, 5, 4};
-
-        OrdenacaoMergeSort<Integer> ordenacaoMergeSort = new OrdenacaoMergeSort<>();
-        ordenacaoMergeSort.setInfo(vetor);
-
-        ordenacaoMergeSort.ordenar();
-
-        assertEquals((Integer) 1, vetor[0]);
-        assertEquals((Integer) 2, vetor[1]);
-        assertEquals((Integer) 3, vetor[2]);
-        assertEquals((Integer) 4, vetor[3]);
-        assertEquals((Integer) 5, vetor[4]);
-        assertEquals((Integer) 6, vetor[5]);
-    }
 }

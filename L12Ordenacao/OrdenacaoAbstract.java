@@ -11,7 +11,10 @@ public abstract class OrdenacaoAbstract<T extends Comparable<T>> {
         this.info = info;
     }
 
-    public void trocar(int a, int b){
+    public void trocar(int a, int b) {
+        if (a == b) {
+            return;
+        }
         T temp = info[a];
         info[a] = info[b];
         info[b] = temp;

@@ -10,7 +10,6 @@ public class OrdenacaoBolha<T extends Comparable<T>> extends OrdenacaoAbstract<T
             for (int j = 0; j < i; j++) {
                 if (info[j].compareTo(info[j + 1]) > 0) {
                     trocar(j, j + 1);
-                    info = getInfo();
                 }
             }
         }
